@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#244d38"><meta name="color-scheme" content="light dark"><title>Mit főzzek?</title>
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Mit főzzek?"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon-180.png"><link rel="icon" type="image/png" href="icons/icon-192.png">
+<style>
+/* Az indító animáció a legelső HTML-képkockán, a receptadatbázissal párhuzamosan indul. */
+#intro{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#fff9ef,#f9e6da 70%,#f2d4c9);color:#542921;transition:opacity .22s ease;isolation:isolate}
+#intro.intro-out{opacity:0;pointer-events:none}
+.intro-scene{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;position:relative}
+.intro-halo{position:absolute;top:35%;left:50%;width:270px;height:270px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#fff6ec 8%,#ffb9aa33 44%,transparent 70%);animation:halo 1.2s ease-out both}
+.intro-emblem{width:160px;height:160px;position:relative;display:grid;place-items:center;margin-bottom:22px}
+.intro-ribbon{position:absolute;inset:0;overflow:visible;animation:drawRibbon 1.1s ease-in-out both}
+.intro-ribbon path{stroke-dasharray:420;stroke-dashoffset:420;animation:trace 1.1s ease forwards}
+.intro-core{position:relative;width:104px;height:104px;filter:drop-shadow(0 10px 13px #b91f3b55);animation:heartBloom 1.25s cubic-bezier(.2,.8,.2,1) both}
+.intro-spark{position:absolute;left:50%;top:45%;width:9px;height:9px;transform:translate(-50%,-50%) rotate(var(--angle));opacity:0;animation:burst .95s .12s ease-out both}
+.intro-spark:before{content:"";display:block;width:var(--size);height:var(--size);border-radius:40%;background:var(--shade);transform:rotate(45deg)}
+.intro-message{position:relative;font:500 clamp(25px,7vw,37px)/1.2 Georgia,serif;letter-spacing:-.8px;animation:words .65s .1s ease both;margin:0 18px}
+.intro-caption{position:relative;font:600 12px/1.4 system-ui,sans-serif;letter-spacing:.21em;text-transform:uppercase;color:#99675b;margin-top:15px;animation:words .75s .25s ease both}
+.intro-line{width:104px;height:2px;border-radius:4px;background:#edc4b2;overflow:hidden;position:relative;margin-top:32px;animation:words .4s .2s both}
+.intro-line:after{content:"";display:block;width:100%;height:100%;background:linear-gradient(90deg,#e6a3a2,#ba263e);transform-origin:left;animation:loadline 1.35s ease-out both}
+@keyframes trace{to{stroke-dashoffset:0}}@keyframes drawRibbon{from{opacity:0;transform:scale(.65) rotate(-14deg)}to{opacity:.85;transform:scale(1) rotate(0)}}@keyframes heartBloom{0%{transform:scale(.1) rotate(-18deg);opacity:0}32%{transform:scale(1.18) rotate(3deg);opacity:1}48%{transform:scale(.92)}64%{transform:scale(1.08)}80%,100%{transform:scale(1)}}
+@keyframes halo{from{opacity:0;transform:translate(-50%,-50%) scale(.4)}to{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}@keyframes burst{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--angle)) translateX(15px) scale(.25)}25%{opacity:1}80%{opacity:.83}100%{opacity:.15;transform:translate(-50%,-50%) rotate(var(--angle)) translateX(var(--reach)) scale(.7)}}
+@keyframes words{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}@keyframes loadline{from{transform:scaleX(.03)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){#intro *{animation:none!important} .intro-spark{display:none}#intro .intro-ribbon path{stroke-dashoffset:0}#intro{transition:none}}
+</style>
+<script>window.introStarted=performance.now();</script><link rel="stylesheet" href="style.css">
+<script defer src="recipes.js"></script><script defer src="app.js"></script><script defer src="bakery.js"></script><script defer src="v3.js"></script><script defer src="pwa.js"></script></head>
+<body>
+<div id="intro" role="status" aria-label="Levitől az Anyuknak – az alkalmazás betöltése">
+ <div class="intro-scene">
+  <div class="intro-halo"></div>
+  <div class="intro-emblem">
+   <svg class="intro-ribbon" viewBox="0 0 160 160" aria-hidden="true"><path d="M26 81C8 31 65 2 94 17 143 26 163 78 132 116 96 153 24 142 17 101" fill="none" stroke="#d8907c" stroke-width="1.4" stroke-linecap="round"/><path d="M37 29C90 1 148 39 143 86 138 126 95 155 45 133" fill="none" stroke="#eac1a9" stroke-width="1" stroke-linecap="round"/></svg>
+   <i class="intro-spark" style="--angle:15deg;--reach:113px;--size:6px;--shade:#c64050"></i><i class="intro-spark" style="--angle:46deg;--reach:97px;--size:5px;--shade:#bda15b"></i><i class="intro-spark" style="--angle:82deg;--reach:111px;--size:4px;--shade:#e8a5a6"></i><i class="intro-spark" style="--angle:127deg;--reach:110px;--size:7px;--shade:#e07377"></i><i class="intro-spark" style="--angle:165deg;--reach:102px;--size:4px;--shade:#c4a66b"></i><i class="intro-spark" style="--angle:206deg;--reach:104px;--size:7px;--shade:#d7606f"></i><i class="intro-spark" style="--angle:245deg;--reach:113px;--size:5px;--shade:#e2ad8c"></i><i class="intro-spark" style="--angle:282deg;--reach:105px;--size:7px;--shade:#b72c48"></i><i class="intro-spark" style="--angle:320deg;--reach:116px;--size:5px;--shade:#c6a366"></i>
+   <svg class="intro-core" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="heart-red" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f16c73"/><stop offset=".5" stop-color="#db3d52"/><stop offset="1" stop-color="#ae1638"/></linearGradient></defs><path fill="url(#heart-red)" d="M50 88C20 68 5 51 5 30 5 5 35 0 50 24 65 0 95 5 95 30 95 51 80 68 50 88Z"/><path d="M15 26Q20 12 32 14" stroke="#fff0ea" stroke-width="3.4" opacity=".65" stroke-linecap="round" fill="none"/></svg>
+  </div>
+  <p class="intro-message">Levitől az Anyuknak</p><span class="intro-caption">Szeretettel készítve</span><i class="intro-line" aria-hidden="true"></i>
+ </div>
+</div>
+<header id="header"></header><div id="pwaStatus" role="status" aria-live="polite"></div><main id="main"></main><nav id="nav" aria-label="Fő navigáció"></nav><div id="overlays"></div><div id="toast" role="status" aria-live="polite"></div><input type="file" id="importFile" accept=".json,application/json" hidden>
+<input type="file" id="pwaCamera" accept="image/*" capture="environment" hidden><input type="file" id="pwaGallery" accept="image/*" hidden></body></html>

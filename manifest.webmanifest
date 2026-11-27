@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "Mit főzzek?",
+  "short_name": "Mit főzzek?",
+  "description": "Levitől az Anyuknak – magyar receptkönyv, kamra és menütervező.",
+  "lang": "hu",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f9e6da",
+  "theme_color": "#244d38",
+  "icons": [
+    {"src":"icons/icon-192.png","type":"image/png","sizes":"192x192","purpose":"any"},
+    {"src":"icons/icon-512.png","type":"image/png","sizes":"512x512","purpose":"any maskable"}
+  ],
+  "categories": ["food","lifestyle","utilities"]
+}
